@@ -1,5 +1,8 @@
+import React, { useState } from "react";
 import ExpenseList from "./components/Expenses/ExpenseList";
 import NewExpense from "./components/NewExpense/NewExpense";
+import ExpensesFilter from "./components/Expenses/ExpensesFilter";
+
 const expenses = [
   {
     id: 'e1',
@@ -26,9 +29,15 @@ const addExpense = (newExpense) => {
   console.log(newExpense);
 }
 function App() {
+  const [selectedYear, setSelectedYear] = useState('2019');
+  const setYear = (event) => {
+    setSelectedYear(event.target.value);
+  }
   return (
     <div>
       <NewExpense onAddExpense={addExpense}/>
+      <ExpensesFilter onFilterSelect={setYear} selectedYear={selectedYear} />
+      <p style={{color: "white"}}>Selected year: {selectedYear}</p>
       <ExpenseList expenses={expenses}/>
     </div>
   );
