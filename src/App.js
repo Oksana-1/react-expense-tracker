@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ExpenseList from "./components/Expenses/ExpenseList";
 import NewExpense from "./components/NewExpense/NewExpense";
-import ExpensesFilter from "./components/Expenses/ExpensesFilter";
 
 const expenses = [
   {
@@ -36,9 +35,8 @@ function App() {
   return (
     <div>
       <NewExpense onAddExpense={addExpense}/>
-      <ExpensesFilter onFilterSelect={setYear} selectedYear={selectedYear} />
-      <p style={{color: "white"}}>Selected year: {selectedYear}</p>
-      <ExpenseList expenses={expenses}/>
+      <p style={{color: "white", textAlign: "center"}}>Selected year: {selectedYear}</p>
+      <ExpenseList expenses={expenses} selectedYear={selectedYear} setYear={setYear}/>
     </div>
   );
 }
